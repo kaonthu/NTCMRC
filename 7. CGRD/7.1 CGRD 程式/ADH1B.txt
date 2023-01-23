@@ -1,0 +1,143 @@
+> result4 <- result2
+> 
+> result4 <- result2[-which(result2$ADH1B==c("")),]
+> result4 <- result4[-which(result4$ADH1B==c("NoCTll")),]
+> 
+> table_one <- tableby(ADH1B~type,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|       | CC (N=117)  | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type   |             |             |             |                |   0.958|
+|-      | 114 (97.4%) | 457 (97.2%) | 685 (97.0%) |  1256 (97.1%)  |        |
+|-  HBV |  3 (2.6%)   |  13 (2.8%)  |  21 (3.0%)  |   37 (2.9%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_HBV_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.1,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|       | CC (N=117)  | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.1 |             |             |             |                |   0.842|
+|-      | 116 (99.1%) | 463 (98.5%) | 695 (98.4%) |  1274 (98.5%)  |        |
+|-  HCV |  1 (0.9%)   |  7 (1.5%)   |  11 (1.6%)  |   19 (1.5%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_HCV_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.2,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|         | CC (N=117) | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:--------|:----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.2   |            |             |             |                |   0.121|
+|-        | 85 (72.6%) | 380 (80.9%) | 568 (80.5%) |  1033 (79.9%)  |        |
+|-  Liver | 32 (27.4%) | 90 (19.1%)  | 138 (19.5%) |  260 (20.1%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_Liver_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.3,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|          | CC (N=117)  | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:---------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.3    |             |             |             |                |   0.882|
+|-         | 106 (90.6%) | 422 (89.8%) | 640 (90.7%) |  1168 (90.3%)  |        |
+|-  Cancer |  11 (9.4%)  | 48 (10.2%)  |  66 (9.3%)  |   125 (9.7%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_Cancer_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.4,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|         | CC (N=117)  | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:--------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.4   |             |             |             |                |   0.452|
+|-        | 116 (99.1%) | 462 (98.3%) | 689 (97.6%) |  1267 (98.0%)  |        |
+|-  Death |  1 (0.9%)   |  8 (1.7%)   |  17 (2.4%)  |   26 (2.0%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_Death_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.5,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|       | CC (N=117) | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:------|:----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.5 |            |             |             |                |   0.548|
+|-      | 97 (82.9%) | 408 (86.8%) | 605 (85.7%) |  1110 (85.8%)  |        |
+|-  CKD | 20 (17.1%) | 62 (13.2%)  | 101 (14.3%) |  183 (14.2%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_CKD_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.6,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|        | CC (N=117) | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:-------|:----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.6  |            |             |             |                |   0.529|
+|-       | 96 (82.1%) | 405 (86.2%) | 601 (85.1%) |  1102 (85.2%)  |        |
+|-  CKD2 | 21 (17.9%) | 65 (13.8%)  | 105 (14.9%) |  191 (14.8%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_CKD2_20221227.csv",sep=",")
+> 
+> table_one <- tableby(ADH1B~type.7,data=result4)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "ADH1B_1293",text=TRUE,digits = 1)
+> table_one
+
+
+Table: ADH1B_1293
+
+|            | CC (N=117) | TC (N=470)  | TT (N=706)  | Total (N=1293) | p value|
+|:-----------|:----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.7      |            |             |             |                |   0.419|
+|-           | 59 (50.4%) | 209 (44.5%) | 310 (43.9%) |  578 (44.7%)   |        |
+|-  Coronary | 58 (49.6%) | 261 (55.5%) | 396 (56.1%) |  715 (55.3%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/ADH1B_1293_Coronary_20221227.csv",sep=",")
+> 
+> 
+> #################################

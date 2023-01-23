@@ -1,0 +1,143 @@
+> #################################
+> result5 <- result2
+> 
+> result5 <- result5[-which(result5$PNPLA3==c("")),]
+> 
+> table_one <- tableby(PNPLA3~type,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|       | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type   |             |             |             |                |   0.820|
+|-      | 643 (96.8%) | 603 (97.4%) | 321 (97.0%) |  1567 (97.1%)  |        |
+|-  HBV |  21 (3.2%)  |  16 (2.6%)  |  10 (3.0%)  |   47 (2.9%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_HBV_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.1,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|       | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.1 |             |             |             |                |   0.028|
+|-      | 659 (99.2%) | 604 (97.6%) | 328 (99.1%) |  1591 (98.6%)  |        |
+|-  HCV |  5 (0.8%)   |  15 (2.4%)  |  3 (0.9%)   |   23 (1.4%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_HCV_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.2,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|         | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:--------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.2   |             |             |             |                |   0.658|
+|-        | 543 (81.8%) | 494 (79.8%) | 266 (80.4%) |  1303 (80.7%)  |        |
+|-  Liver | 121 (18.2%) | 125 (20.2%) | 65 (19.6%)  |  311 (19.3%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_Liver_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.3,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|          | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:---------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.3    |             |             |             |                |   0.680|
+|-         | 601 (90.5%) | 554 (89.5%) | 294 (88.8%) |  1449 (89.8%)  |        |
+|-  Cancer |  63 (9.5%)  | 65 (10.5%)  | 37 (11.2%)  |  165 (10.2%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_Cancer_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.4,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|         | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:--------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.4   |             |             |             |                |   0.372|
+|-        | 649 (97.7%) | 605 (97.7%) | 319 (96.4%) |  1573 (97.5%)  |        |
+|-  Death |  15 (2.3%)  |  14 (2.3%)  |  12 (3.6%)  |   41 (2.5%)    |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_Death_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.5,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|       | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.5 |             |             |             |                |   0.247|
+|-      | 567 (85.4%) | 545 (88.0%) | 293 (88.5%) |  1405 (87.1%)  |        |
+|-  CKD | 97 (14.6%)  | 74 (12.0%)  | 38 (11.5%)  |  209 (12.9%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_CKD_20221227.csv",sep=",")
+> 
+> table_one <- tableby(PNPLA3~type.6,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|        | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:-------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.6  |             |             |             |                |   0.285|
+|-       | 563 (84.8%) | 538 (86.9%) | 292 (88.2%) |  1393 (86.3%)  |        |
+|-  CKD2 | 101 (15.2%) | 81 (13.1%)  | 39 (11.8%)  |  221 (13.7%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_CKD2_20221227.csv",sep=",")
+> 
+> 
+> table_one <- tableby(PNPLA3~type.7,data=result5)
+> #summary(table_one)
+> table_one <- summary(table_one,title = "PNPLA3_1614",text=TRUE,digits = 1)
+> table_one
+
+
+Table: PNPLA3_1614
+
+|            | CC (N=664)  | CG (N=619)  | GG (N=331)  | Total (N=1614) | p value|
+|:-----------|:-----------:|:-----------:|:-----------:|:--------------:|-------:|
+|type.7      |             |             |             |                |   0.105|
+|-           | 310 (46.7%) | 285 (46.0%) | 175 (52.9%) |  770 (47.7%)   |        |
+|-  Coronary | 354 (53.3%) | 334 (54.0%) | 156 (47.1%) |  844 (52.3%)   |        |
+
+> 
+> write.table(table_one,"F:/kaonthu個人程式/20221207_林志郎醫師/攜出/PNPLA3_1614_Coronary_20221227.csv",sep=",")
+> 
+> ########################################

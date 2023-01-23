@@ -1,0 +1,70 @@
+#install.packages("survminer")
+
+#install.packages("ggsurvplot")
+#install.packages("magrittr")
+#install.packages("ggplot2")
+#install.packages("ggfortify")
+
+
+#library(magrittr) 
+#library(ggplot2)
+
+#library(ggfortify)
+#library(survival)
+#library("survminer")
+
+library(survival)
+library(survminer)
+
+lung %>% head()
+
+fit<- survfit(Surv(time, status) ~ 1, data = lung)
+ggsurvplot(fit)
+
+
+fit<- survfit(Surv(time, status) ~ sex, data = lung)
+ggsurvplot(fit)
+
+#############################################
+
+head(result5)
+dim(result5)
+
+a = result5[,c("IPDAT","IPDAT.1","IPDAT.2","IPDAT.3","IPDAT.4","IPDAT.5","IPDAT.6","IPDAT.7")]
+min(na.omit(result5[,c("IPDAT")]))
+min(na.omit(a))
+
+result5[which(result5$type.1!=""),c("IPDAT.1","DSSID.1","DSSID1.1","DSSID2.1","DSSID3.1","DSSID4.1","DSSID5.1","type.1")]
+
+result5$HCV_status <- 1 
+#將HCV的狀態設為Censored
+result5[which(result5$type.1!=""),c("HCV_status")] <- 2
+#將有發生HCV的狀態設為2
+
+
+f = function(x){
+a = 365 * (as.numeric(substr(x,1,4)) - 2003)+
+30 * (as.numeric(substr(x,5,6)) - 3)+
+as.numeric(substr(x,7,8))
+return(a)
+}
+
+result5$HCV_time <- f(20201231)
+
+AA <- result5[which(result5$type.1!=""),c("IPDAT.1")]
+# 得HCV 的時間
+
+result5[which(result5$type.1!=""),c("HCV_time")]  <- f(AA)
+
+########################################
+
+result5[,c("PNPLA3","HCV_time","HCV_status","IPDAT.1","DSSID.1","DSSID1.1","DSSID2.1","DSSID3.1","DSSID4.1","DSSID5.1","type.1")]
+
+fit<- survfit(Surv(HCV_time, HCV_status) ~ PNPLA3, data = result5)
+
+ggsurvplot(fit, pval = TRUE,xlim = c(0,8000),ylim = c(0.5,1))
+ggsurvplot(fit, pval = TRUE,xlim = c(0,7000))
+ggsurvplot(fit, pval = TRUE,xlim = c(0,7000),ylim = c(0.9,1))
+
+summary(fit)
+
