@@ -1,0 +1,154 @@
+f=function(date,person,speciem,Pstart,P_number_start,Cstart,C_number_start,Box_start,Site_start)
+
+{
+S_number_a <- rep(date,person)
+S_number_b <- rep(sprintf('%0.3d', 1:person),each = 1)
+S_number <- paste(S_number_a,S_number_b,sep="")
+
+P_number_a <- rep(Pstart,person*1)
+P_number_b <- rep(sprintf('%0.4d', (P_number_start):(P_number_start+person-1)),each = 1)
+P_number  <-  paste(P_number_a,P_number_b,sep="")
+
+C_number_a <- rep(Cstart,person*1)
+C_number_b <- sprintf('%0.5d', (C_number_start):(C_number_start+person*1-1))
+C_number  <-  paste(C_number_a,C_number_b,sep="")
+
+
+Site <- ((Site_start-1  + 0:(person*1-1)) %% 100) + 1
+
+Box <- Box_start  + (Site_start + (-1):(person*1-2)) %/% 100
+
+Box <- paste0("New",sprintf('%0.4d', Box))
+
+OUT <- data.frame(S_number_a,S_number,P_number,C_number,Box,Site," ")
+
+#print(data.frame(QC_miss_person,QC_miss_number))
+
+
+QC_start <- rep(1,person)
+
+if( length(QC_miss_person) > 0)
+
+{
+
+delete <- NULL
+
+for (i in 1:length(QC_miss_person)) {
+QC_start[QC_miss_person[i]] <- QC_start[QC_miss_person[i]]-QC_miss_number[i]
+delete <- c(delete,(1*QC_miss_person[i]-QC_miss_number[i]+1) : (1*QC_miss_person[i]))
+}
+
+OUT2 <- OUT[-delete,]
+
+QC <- rep(0,person*1 - length(delete))
+QC[cumsum(QC_start)] <- 1
+
+
+QC_start <- rep(1,person)
+
+delete <- NULL
+
+for (i in 1:length(QC_miss_person)) {
+QC_start[QC_miss_person[i]] <- QC_start[QC_miss_person[i]]-QC_miss_number[i]
+delete <- c(delete,(1*QC_miss_person[i]-QC_miss_number[i]+1) : (1*QC_miss_person[i]))
+}
+
+OUT2 <- OUT[-delete,]
+
+QC <- rep(0,person*1 - length(delete))
+QC[cumsum(QC_start)] <- 1
+
+OUT3 <- data.frame(OUT2,"P",QC)
+
+}else {  
+
+ QC <- rep(c(0),person)
+ OUT3 <- data.frame(OUT,"P",QC)    }
+
+print(OUT3[(dim(OUT3)[1]-5):dim(OUT3)[1],])
+return(OUT3)
+
+}
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20220917 <- f(20220917,87,"P","P11",1014,"C60",1014,1011,14)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20220924 <- f(20220924,58,"P","P11",1101,"C60",1101,1012,1)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221001 <- f(20221001,67,"P","P11",1159,"C60",1159,1012,59)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221015 <- f(20221015,109,"P","P11",1226,"C60",1226,1013,26)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221022 <- f(20221022,106,"P","P11",1335,"C60",1335,1014,35)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221029 <- f(20221029,61,"P","P11",1441,"C60",1441,1015,41)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221105 <- f(20221105,53,"P","P11",1502,"C60",1502,1016,2)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221112 <- f(20221112,106,"P","P11",1555,"C60",1555,1016,55)
+
+#################################################################
+
+QC_miss_person <- NULL
+QC_miss_number <- NULL
+
+out_20221119 <- f(20221119,122,"P","P11",1661,"C60",1661,1017,61)
+
+#################################################################
+
+out_total <- rbind(out_20220917,out_20220924,out_20221001,out_20221015,out_20221022,
+out_20221029,out_20221105,out_20221112,out_20221119)
+
+out <- data.frame(sid=out_total$S_number,P_number=out_total$P_number,
+C_number=out_total$C_number,Box=out_total$Box,Site=out_total$Site,
+ML = 0 ,Specimen = "P",QC=out_total$QC,C_Date=out_total$S_number_a,
+IN_time = 20221125,CMRC_Reserved=1,sup=0)
+
+library(RMySQL)
+library(DBI)
+
+mysqlconnection = dbConnect(MySQL(), dbname = "kao_practice_5",user = 'kaonthu', password = 'asd123',host = '192.168.1.41')
+
+#dbListTables(mysqlconnection)
+#summary(mysqlconnection)
+
+dbWriteTable(mysqlconnection,"Total_speciem_2022_0917_1119",out,append=TRUE)
